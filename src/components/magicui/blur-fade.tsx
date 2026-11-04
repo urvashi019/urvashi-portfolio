@@ -1,6 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useInView, Variants } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  Variants,
+} from "motion/react";
 import { useRef } from "react";
 
 interface BlurFadeProps {
@@ -28,7 +33,7 @@ const BlurFade = ({
   inViewMargin = "-50px",
   blur = "6px",
 }: BlurFadeProps) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inViewResult = useInView(ref, {
     once: true,
     ...(inViewMargin ? { margin: inViewMargin as any } : {})
@@ -43,6 +48,7 @@ const BlurFade = ({
     <AnimatePresence>
       <motion.div
         ref={ref}
+        data-blur-fade
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         exit="hidden"

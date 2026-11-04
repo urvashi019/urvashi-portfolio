@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -44,24 +43,24 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --background: #f7f3f0;
+  --foreground: #211816;
+  --card: #fffaf7;
+  --card-foreground: #211816;
+  --popover: #fffaf7;
+  --popover-foreground: #211816;
+  --primary: #087fab;
+  --primary-foreground: #ffffff;
+  --secondary: #eee6e2;
+  --secondary-foreground: #211816;
+  --muted: #eee6e2;
+  --muted-foreground: #665b57;
+  --accent: #eee6e2;
+  --accent-foreground: #211816;
+  --destructive: #087fab;
+  --border: rgb(28 92 122 / 17%);
+  --input: rgb(28 92 122 / 17%);
+  --ring: #147eaa;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -69,8 +68,8 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #087fab;
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
@@ -78,24 +77,24 @@
 }
 
 .dark {
-  --background: oklch(0.18 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --background: #0a0202;
+  --foreground: #f4eeeb;
+  --card: #150808;
+  --card-foreground: #f4eeeb;
+  --popover: #150808;
+  --popover-foreground: #f4eeeb;
+  --primary: #f4eeeb;
+  --primary-foreground: #150808;
+  --secondary: #241010;
+  --secondary-foreground: #f4eeeb;
+  --muted: #261312;
+  --muted-foreground: #baaaa5;
+  --accent: #261312;
+  --accent-foreground: #f4eeeb;
+  --destructive: #ef5c52;
+  --border: rgb(255 240 235 / 13%);
+  --input: rgb(255 240 235 / 16%);
+  --ring: #d78c8c;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -111,126 +110,122 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.light {
+  --primary: #087fab;
+  --primary-foreground: #ffffff;
+  --ring: #147eaa;
+}
+
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-foreground;
   }
 
-  /* Shiki dual theme support */
-  .shiki,
-  .shiki span {
-    color: var(--shiki-light);
-    background-color: transparent;
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: 410px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-background::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    transparent 34%,
+    color-mix(in srgb, var(--background) 40%, transparent) 60%,
+    var(--background) 86%
+  );
+  content: "";
+}
+
+.hero-background-static,
+.hero-background-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-background-static {
+  background:
+    linear-gradient(to bottom, transparent 0%, var(--background) 100%),
+    radial-gradient(ellipse at 22% 12%, rgb(205 16 24 / 84%) 0%, transparent 54%),
+    radial-gradient(ellipse at 76% 10%, rgb(105 3 16 / 80%) 0%, transparent 58%),
+    linear-gradient(to bottom, #4a050c 0%, #21060a 58%, var(--background) 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 84%);
+}
+
+.hero-background-static::after {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgb(10 2 2 / 85%) 0.8px, transparent 1px);
+  background-size: 4px 4px;
+  content: "";
+}
+
+.light .hero-background-static {
+  background:
+    linear-gradient(to bottom, transparent 0%, var(--background) 100%),
+    radial-gradient(ellipse at 22% 12%, rgb(103 186 222 / 84%) 0%, transparent 54%),
+    radial-gradient(ellipse at 76% 10%, rgb(40 126 170 / 72%) 0%, transparent 58%),
+    linear-gradient(to bottom, #9bd3ee 0%, #d5edf8 58%, var(--background) 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 84%);
+}
+
+.light .hero-background-static::after {
+  background-image: radial-gradient(rgb(24 79 112 / 28%) 0.8px, transparent 1px);
+}
+
+.light .hero-title,
+.light .hero-pronunciation {
+  color: #f5fbff;
+  text-shadow: 0 1px 5px rgb(3 35 54 / 55%);
+}
+
+.hero-background-canvas {
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+
+.hero-background-canvas[data-ready="true"] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .dark .shiki,
-  .dark .shiki span {
-    color: var(--shiki-dark);
-    background-color: transparent;
+  .hero-background-canvas {
+    display: none;
   }
 
-.prose pre {
-    @apply leading-relaxed bg-transparent! font-mono!;
+  [data-blur-fade] {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
-
-  .prose code {
-    @apply m-0! mx-1! border rounded-md! px-1.5 py-0.5 bg-muted/60 dark:bg-muted/40 text-[13px]! font-mono text-foreground/90!;
-  }
-
-  .prose code::before, .prose code::after {
-    @apply content-none!;
-  }
-
-  .prose h1 {
-    @apply text-2xl! font-semibold! tracking-tight! leading-tight!;
-  }
-
-  .prose h2 {
-    @apply text-xl! font-semibold! tracking-tight! leading-tight!;
-  }
-
-  .prose h3 {
-    @apply text-lg! font-semibold! tracking-tight! leading-tight!;
-  }
-
-  .prose h4 {
-    @apply text-base! font-medium! tracking-tight! leading-tight!;
-  }
-
-  .prose h5 {
-    @apply text-base! font-medium! tracking-tight! leading-tight!;
-  }
-
-  .prose h6 {
-    @apply text-base! font-medium! tracking-tight! leading-tight!;
-  }
-
-  .prose a {
-    @apply text-primary underline underline-offset-4;
-  }
-
-  .prose blockquote {
-    @apply border-l-4 border-amber-500! pl-4 italic bg-muted/50 p-4 rounded-md rounded-l-none;
-  }
-
-  .prose blockquote p {
-    @apply m-0!;
-  }
-
-  .prose blockquote p:first-child {
-    @apply mt-0!;
-  }
-
-  /* Task lists (remark-gfm): remove bullet marker so it renders like a pure checklist */
-  .prose :where(ul.contains-task-list):not(:where([class~="not-prose"] *)) {
-    @apply list-none! pl-0!;
-  }
-
-  .prose :where(li.task-list-item):not(:where([class~="not-prose"] *)) {
-    @apply pl-0!;
-  }
-
-  .prose
-    :where(li.task-list-item > input[type="checkbox"]):not(
-      :where([class~="not-prose"] *)
-    ) {
-    @apply mr-2 align-middle!;
-  }
-
-  .prose :where(table):not(:where([class~="not-prose"]) *) {
-    @apply w-full min-w-full;
-    border-collapse: separate;
-    border-spacing: 0;
-  }
-
-  .prose :where(th):not(:where([class~="not-prose"] *)),
-  .prose :where(td):not(:where([class~="not-prose"] *)) {
-    @apply px-6 py-4 align-middle m-0 whitespace-nowrap;
-  }
-
-  .prose tr{
-    @apply hover:bg-accent/50! transition-colors! cursor-pointer! h-10!;
-  }
-
-  .prose :where(th):not(:where([class~="not-prose"] *)) {
-    @apply text-left font-semibold text-foreground border-b border-border m-0! bg-muted/50 p-3! py-2!;
-  }
-
-  .prose :where(td):not(:where([class~="not-prose"] *)) {
-    @apply text-muted-foreground border-b border-border text-sm! p-2!;
-  }
-
-  .prose :where(th:not(:last-child)):not(:where([class~="not-prose"] *)),
-  .prose :where(td:not(:last-child)):not(:where([class~="not-prose"] *)) {
-    @apply border-r border-border;
-  }
-
-  .prose :where(tbody tr:last-child td):not(:where([class~="not-prose"] *)) {
-    @apply border-b-0;
-  }
-
 }

@@ -15,7 +15,7 @@ export default function ProjectsSection() {
 
                         />
                         <div className="border bg-primary z-10 rounded-xl px-4 py-1">
-                            <span className="text-background text-sm font-medium">My Projects</span>
+                            <span className="text-background text-sm font-medium">Projects</span>
                         </div>
                         <div
                             className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent"
@@ -23,11 +23,9 @@ export default function ProjectsSection() {
                         />
                     </div>
                     <div className="flex flex-col gap-y-3 items-center justify-center">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Check out my latest work</h2>
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Selected projects</h2>
                         <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-                            I&apos;ve worked on a variety of projects, from simple
-                            websites to complex web applications. Here are a few of my
-                            favorites.
+                            Hardware and embedded systems projects.
                         </p>
                     </div>
                 </div>
@@ -45,9 +43,6 @@ export default function ProjectsSection() {
                                 description={project.description}
                                 dates={project.dates}
                                 tags={project.technologies}
-                                image={project.image}
-                                video={project.video}
-                                links={project.links}
                             />
                         </BlurFade>
                     ))}
@@ -56,4 +51,3 @@ export default function ProjectsSection() {
         </section>
     );
 }
-

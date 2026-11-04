@@ -1,47 +1,30 @@
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# Urvashi Vishwakarma - Portfolio
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+A personal portfolio for an Electronics & Communication Engineering student at UIT RGPV, built with Next.js and exported as a static site for GitHub Pages.
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+The site content lives in [`src/data/resume.ts`](./src/data/resume.ts). Replace the visible `[ADD ...]` placeholders with confirmed details before publishing.
 
-# Features
+## Run locally
 
-- Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+```bash
+pnpm install
+pnpm dev
+```
 
-# Getting Started Locally
+Create the static site with:
 
-1. Clone this repository to your local machine:
+```bash
+pnpm build
+```
 
-   ```bash
-   git clone https://github.com/dillionverma/portfolio
-   ```
+The exported site is written to `out/`.
 
-2. Move to the cloned directory
+## GitHub Pages and custom domain
 
-   ```bash
-   cd portfolio
-   ```
+The workflow in `.github/workflows/deploy.yml` deploys the `main` branch to GitHub Pages. In the repository settings, enable Pages with **GitHub Actions** as the build and deployment source. The `public/CNAME` file configures `urvashivishi.me`.
 
-3. Install dependencies:
+At the domain registrar, point the apex domain to GitHub Pages with A records for `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`. Add an AAAA record for each of `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, and `2606:50c0:8003::153` if IPv6 is supported. Optionally point `www` to the GitHub Pages hostname with a CNAME, then enable HTTPS in repository Pages settings after DNS propagates.
 
-   ```bash
-   pnpm install
-   ```
+## Credits and license
 
-4. Start the local Server:
-
-   ```bash
-   pnpm dev
-   ```
-
-5. Open the [Config file](./src/data/resume.tsx) and make changes
-
-# License
-
-Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
+Template by Magic UI. This site is based on the [Magic UI portfolio template](https://github.com/magicuidesign/portfolio), distributed under the MIT license; see [`LICENSE`](./LICENSE).

@@ -45,6 +45,7 @@ const BlurFadeText = ({
           return (
             <motion.span
               key={i}
+              data-blur-fade
               initial="hidden"
               animate="visible"
               variants={charVariants}
@@ -67,6 +68,7 @@ const BlurFadeText = ({
   return (
     <div className="flex">
       <motion.span
+        data-blur-fade
         initial="hidden"
         animate="visible"
         variants={combinedVariants}
