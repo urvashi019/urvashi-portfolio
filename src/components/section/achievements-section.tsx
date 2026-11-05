@@ -21,7 +21,7 @@ export default function AchievementsSection() {
           </div>
           <div className="flex flex-col items-center justify-center gap-y-3">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-              Milestones &amp; goals
+              Achievements &amp; goals
             </h2>
             <p className="text-balance text-center text-muted-foreground md:text-lg/relaxed">
               Achievements and current academic goals.
@@ -49,11 +49,6 @@ export default function AchievementsSection() {
                 <h3 className="font-semibold leading-none">
                   {achievement.title}
                 </h3>
-                {achievement.location && (
-                  <p className="text-sm text-muted-foreground">
-                    {achievement.location}
-                  </p>
-                )}
                 {achievement.description && (
                   <p className="wrap-break-word text-sm leading-relaxed text-muted-foreground">
                     {achievement.description}

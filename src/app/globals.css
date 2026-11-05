@@ -43,58 +43,60 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #f7f3f0;
-  --foreground: #211816;
-  --card: #fffaf7;
-  --card-foreground: #211816;
-  --popover: #fffaf7;
-  --popover-foreground: #211816;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --background: #f3f9fc;
+  --foreground: #172a35;
+  --card: #fbfdfe;
+  --card-foreground: #172a35;
+  --popover: #fbfdfe;
+  --popover-foreground: #172a35;
   --primary: #087fab;
   --primary-foreground: #ffffff;
-  --secondary: #eee6e2;
-  --secondary-foreground: #211816;
-  --muted: #eee6e2;
-  --muted-foreground: #665b57;
-  --accent: #eee6e2;
-  --accent-foreground: #211816;
-  --destructive: #087fab;
+  --secondary: #e4f1f7;
+  --secondary-foreground: #172a35;
+  --muted: #eaf3f8;
+  --muted-foreground: #536a78;
+  --accent: #e4f1f7;
+  --accent-foreground: #172a35;
+  --destructive: #b42332;
   --border: rgb(28 92 122 / 17%);
   --input: rgb(28 92 122 / 17%);
   --ring: #147eaa;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --chart-1: #087fab;
+  --chart-2: #3c9cc2;
+  --chart-3: #306c91;
+  --chart-4: #72b7d5;
+  --chart-5: #4b83a2;
+  --sidebar: #f7fbfd;
+  --sidebar-foreground: #172a35;
   --sidebar-primary: #087fab;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-accent: #eaf3f8;
+  --sidebar-accent-foreground: #172a35;
+  --sidebar-border: rgb(28 92 122 / 17%);
+  --sidebar-ring: #147eaa;
 }
 
 .dark {
-  --background: #0a0202;
+  --background: #0a0304;
   --foreground: #f4eeeb;
-  --card: #150808;
+  --card: #15090a;
   --card-foreground: #f4eeeb;
-  --popover: #150808;
+  --popover: #15090a;
   --popover-foreground: #f4eeeb;
-  --primary: #f4eeeb;
-  --primary-foreground: #150808;
-  --secondary: #241010;
+  --primary: #c74049;
+  --primary-foreground: #fff8f5;
+  --secondary: #241012;
   --secondary-foreground: #f4eeeb;
-  --muted: #261312;
+  --muted: #261315;
   --muted-foreground: #baaaa5;
-  --accent: #261312;
+  --accent: #261315;
   --accent-foreground: #f4eeeb;
   --destructive: #ef5c52;
   --border: rgb(255 240 235 / 13%);
   --input: rgb(255 240 235 / 16%);
-  --ring: #d78c8c;
+  --ring: #df8589;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -102,7 +104,7 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary: #c74049;
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
@@ -172,16 +174,16 @@
 .hero-background-static {
   background:
     linear-gradient(to bottom, transparent 0%, var(--background) 100%),
-    radial-gradient(ellipse at 22% 12%, rgb(205 16 24 / 84%) 0%, transparent 54%),
-    radial-gradient(ellipse at 76% 10%, rgb(105 3 16 / 80%) 0%, transparent 58%),
-    linear-gradient(to bottom, #4a050c 0%, #21060a 58%, var(--background) 100%);
+    radial-gradient(ellipse at 22% 12%, rgb(105 187 222 / 77%) 0%, transparent 54%),
+    radial-gradient(ellipse at 76% 10%, rgb(40 126 170 / 66%) 0%, transparent 58%),
+    linear-gradient(to bottom, #90cce7 0%, #c4e5f3 58%, var(--background) 100%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 84%);
 }
 
 .hero-background-static::after {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgb(10 2 2 / 85%) 0.8px, transparent 1px);
+  background-image: radial-gradient(rgb(9 50 75 / 70%) 0.8px, transparent 1px);
   background-size: 4px 4px;
   content: "";
 }
@@ -189,20 +191,28 @@
 .light .hero-background-static {
   background:
     linear-gradient(to bottom, transparent 0%, var(--background) 100%),
-    radial-gradient(ellipse at 22% 12%, rgb(103 186 222 / 84%) 0%, transparent 54%),
-    radial-gradient(ellipse at 76% 10%, rgb(40 126 170 / 72%) 0%, transparent 58%),
-    linear-gradient(to bottom, #9bd3ee 0%, #d5edf8 58%, var(--background) 100%);
+    radial-gradient(ellipse at 22% 12%, rgb(91 177 218 / 62%) 0%, transparent 54%),
+    radial-gradient(ellipse at 76% 10%, rgb(40 126 170 / 48%) 0%, transparent 58%),
+    linear-gradient(to bottom, #8bc8e4 0%, #c7e7f4 58%, var(--background) 100%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 84%);
 }
 
 .light .hero-background-static::after {
-  background-image: radial-gradient(rgb(24 79 112 / 28%) 0.8px, transparent 1px);
+  background-image: radial-gradient(rgb(11 73 105 / 32%) 0.8px, transparent 1px);
 }
 
 .light .hero-title,
 .light .hero-pronunciation {
-  color: #f5fbff;
-  text-shadow: 0 1px 5px rgb(3 35 54 / 55%);
+  color: #173a50;
+  text-shadow: 0 1px 6px rgb(224 244 252 / 70%);
+}
+
+.light .mode-toggle-sun {
+  color: #087fab;
+}
+
+.dark .mode-toggle-moon {
+  color: #e56369;
 }
 
 .hero-background-canvas {
@@ -214,13 +224,47 @@
   opacity: 1;
 }
 
+.hero-debug {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--background) 82%, transparent);
+  padding: 0.35rem 0.5rem;
+  color: var(--muted-foreground);
+  font: 10px/1.2 ui-monospace, SFMono-Regular, monospace;
+}
+
+.project-art {
+  --art-bg: #100809;
+  --art-glow: #c42031;
+  --art-accent: #ed535b;
+  --art-ink: #e6d7d2;
+  --art-text: #f2e8e4;
+  --art-muted: #9e8580;
+  --art-pad: #c53b43;
+  display: block;
+}
+
+.light .project-art {
+  --art-bg: #edf7fc;
+  --art-glow: #56acd3;
+  --art-accent: #147eaa;
+  --art-ink: #203d4c;
+  --art-text: #203d4c;
+  --art-muted: #587b8c;
+  --art-pad: #147eaa;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
   .hero-background-canvas {
-    display: none;
+    transition: none;
   }
 
   [data-blur-fade] {

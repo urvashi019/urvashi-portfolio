@@ -1,8 +1,6 @@
-# Urvashi Vishwakarma - Portfolio
+# Urvashi Vishwakarma — Portfolio
 
-A personal portfolio for an Electronics & Communication Engineering student at UIT RGPV, built with Next.js and exported as a static site for GitHub Pages.
-
-The site content lives in [`src/data/resume.ts`](./src/data/resume.ts). Replace the visible `[ADD ...]` placeholders with confirmed details before publishing.
+A Next.js portfolio for an Electronics & Communication Engineering student and hardware builder.
 
 ## Run locally
 
@@ -11,20 +9,26 @@ pnpm install
 pnpm dev
 ```
 
-Create the static site with:
+Check the production build locally with:
 
 ```bash
+pnpm lint
+pnpm typecheck
 pnpm build
+pnpm start
 ```
 
-The exported site is written to `out/`.
+## Update content and assets
 
-## GitHub Pages and custom domain
+- Edit the portfolio content, dates, links, skills, and visible `[ADD ...]` placeholders in [`src/data/resume.ts`](./src/data/resume.ts).
+- Add organization logos under `public/logos/` and update their paths in the data file. If an image is unavailable, the page displays a monogram badge.
+- Replace `public/resume.pdf` with the current resume PDF.
+- Set `NEXT_PUBLIC_SITE_URL` when changing the canonical site URL. It defaults to `https://urvashi-portfolio-five.vercel.app`.
 
-The workflow in `.github/workflows/deploy.yml` deploys the `main` branch to GitHub Pages. In the repository settings, enable Pages with **GitHub Actions** as the build and deployment source. The `public/CNAME` file configures `urvashivishi.me`.
+## Vercel and custom domain
 
-At the domain registrar, point the apex domain to GitHub Pages with A records for `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`. Add an AAAA record for each of `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, and `2606:50c0:8003::153` if IPv6 is supported. Optionally point `www` to the GitHub Pages hostname with a CNAME, then enable HTTPS in repository Pages settings after DNS propagates.
+Connect the repository to Vercel and use `main` for production deployments; pull requests receive Vercel preview deployments. To add `urvashivishi.me`, open **Project Settings → Domains**, add the domain, then configure the DNS records Vercel displays at the domain provider. Set `NEXT_PUBLIC_SITE_URL` to `https://urvashivishi.me` in Vercel after connecting the domain.
 
 ## Credits and license
 
-Template by Magic UI. This site is based on the [Magic UI portfolio template](https://github.com/magicuidesign/portfolio), distributed under the MIT license; see [`LICENSE`](./LICENSE).
+Template by Magic UI. This site is based on the [Magic UI portfolio template](https://github.com/magicuidesign/portfolio); see [`LICENSE`](./LICENSE).

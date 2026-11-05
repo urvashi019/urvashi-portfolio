@@ -1,11 +1,11 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { DATA } from "@/data/resume";
+import { EducationLogo } from "@/components/education-logo";
 import ContactActions from "@/components/contact-actions";
-import ContactSection from "@/components/section/contact-section";
-import AchievementsSection from "@/components/section/hackathons-section";
+import AchievementsSection from "@/components/section/achievements-section";
 import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
+import { DATA } from "@/data/resume";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -35,78 +35,77 @@ export default function Page() {
           <div className="space-y-2">
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 3}
-              className="text-base font-medium leading-relaxed text-foreground sm:text-lg"
+              className="max-w-xl text-base font-medium leading-relaxed text-foreground sm:text-lg"
               text={DATA.introduction}
               yOffset={5}
             />
-            <BlurFade delay={BLUR_FADE_DELAY * 4}>
-              <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {DATA.introductionDetail}
-              </p>
-            </BlurFade>
+            {DATA.introductionDetails.map((line, index) => (
+              <BlurFade key={line} delay={BLUR_FADE_DELAY * (4 + index)}>
+                <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {line}
+                </p>
+              </BlurFade>
+            ))}
           </div>
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <ContactActions
               email={DATA.contact.email}
-              xUrl={DATA.contact.x}
               linkedinUrl={DATA.contact.linkedin}
-              cvUrl={DATA.resumeUrl}
+              resumeUrl={DATA.resumeUrl}
             />
           </BlurFade>
         </div>
       </section>
-      <section id="about">
-        <div className="flex min-h-0 flex-col gap-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
+
+      <section id="work" aria-labelledby="work-title">
+        <div className="flex flex-col gap-y-6">
+          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <h2 id="work-title" className="text-xl font-bold">
+              Work Experience
+            </h2>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <div className="max-w-full text-pretty font-sans leading-relaxed text-muted-foreground">
-              {DATA.summary}
-            </div>
-          </BlurFade>
-        </div>
-      </section>
-      <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+          <BlurFade delay={BLUR_FADE_DELAY * 8}>
             <WorkSection />
           </BlurFade>
         </div>
       </section>
-      <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
+
+      <section id="education" aria-labelledby="education-title">
+        <div className="flex flex-col gap-y-6">
+          <BlurFade delay={BLUR_FADE_DELAY * 9}>
+            <h2 id="education-title" className="text-xl font-bold">
+              Education
+            </h2>
           </BlurFade>
           <div className="flex flex-col gap-8">
             {DATA.education.map((education, index) => (
               <BlurFade
                 key={education.school}
-                delay={BLUR_FADE_DELAY * 8 + index * 0.05}
+                delay={BLUR_FADE_DELAY * 10 + index * 0.05}
               >
-                <div className="flex items-center gap-x-3 justify-between group">
-                  <div className="flex items-center gap-x-3 flex-1 min-w-0">
-                    <div aria-hidden="true" className="size-8 md:size-10 rounded-full border bg-muted flex-none" />
-                    <div className="flex-1 min-w-0 flex flex-col gap-0.5">
-                      <div className="font-semibold leading-none flex items-center gap-2">
+                <div className="group flex items-center justify-between gap-x-3">
+                  <div className="flex min-w-0 flex-1 items-center gap-x-3">
+                    <EducationLogo
+                      src={education.logo}
+                      monogram={education.monogram}
+                      name={education.school}
+                    />
+                    <div className="flex min-w-0 flex-1 flex-col gap-1">
+                      <div className="font-semibold leading-tight">
                         {education.school}
                       </div>
                       <div className="font-sans text-sm text-muted-foreground">
                         {education.degree}
                       </div>
-                      <div className="font-sans text-xs text-muted-foreground">
-                        {education.detail}
-                      </div>
+                      {education.detail && (
+                        <div className="font-sans text-xs text-muted-foreground">
+                          {education.detail}
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 text-xs tabular-nums text-muted-foreground text-right flex-none">
-                    <span>
-                      {education.period}
-                    </span>
+                  <div className="flex-none text-right text-xs tabular-nums text-muted-foreground">
+                    {education.period}
                   </div>
                 </div>
               </BlurFade>
@@ -114,37 +113,72 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <div className="flex flex-col gap-y-7">
+          <BlurFade delay={BLUR_FADE_DELAY * 12}>
+            <h2 id="skills-title" className="text-xl font-bold">
+              Skills
+            </h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
-                  <span className="text-foreground text-sm font-medium">{skill.name}</span>
-                </div>
+          {DATA.skills.map((group, groupIndex) => (
+            <div key={group.name} className="flex flex-col gap-3">
+              <BlurFade delay={BLUR_FADE_DELAY * (13 + groupIndex)}>
+                <h3 className="text-sm font-semibold text-muted-foreground">
+                  {group.name}
+                </h3>
               </BlurFade>
-            ))}
-          </div>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((skill, index) => (
+                  <BlurFade
+                    key={skill}
+                    delay={BLUR_FADE_DELAY * (14 + groupIndex + index * 0.1)}
+                  >
+                    <span className="flex h-8 w-fit items-center rounded-xl border border-border bg-background px-3 text-xs font-medium text-foreground ring-2 ring-border/20">
+                      {skill}
+                    </span>
+                  </BlurFade>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
-      <section id="projects">
-        <BlurFade delay={BLUR_FADE_DELAY * 11}>
+
+      <section id="projects" aria-label="Projects">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ProjectsSection />
         </BlurFade>
       </section>
-      <section id="achievements">
-        <BlurFade delay={BLUR_FADE_DELAY * 13}>
+
+      <section id="achievements" aria-label="Achievements">
+        <BlurFade delay={BLUR_FADE_DELAY * 18}>
           <AchievementsSection />
         </BlurFade>
       </section>
-      <section id="contact">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <ContactSection />
+
+      <section id="contact" aria-label="Contact">
+        <BlurFade delay={BLUR_FADE_DELAY * 20}>
+          <div className="rounded-xl border border-border bg-card/70 p-6 sm:p-8">
+            <h2 className="text-xl font-bold">Contact</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Reach out or connect.
+            </p>
+            <div className="mt-5">
+              <ContactActions
+                email={DATA.contact.email}
+                linkedinUrl={DATA.contact.linkedin}
+                resumeUrl={DATA.resumeUrl}
+                compact
+              />
+            </div>
+          </div>
         </BlurFade>
       </section>
+
+      <footer className="border-t border-border pt-5 text-center text-xs text-muted-foreground">
+        {DATA.footerCredit}
+      </footer>
     </main>
   );
 }
