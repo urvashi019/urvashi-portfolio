@@ -7,7 +7,7 @@ import "./globals.css";
 import HeroBackgroundLoader from "@/components/hero-background-loader";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? DATA.url;
-const pageTitle = "Urvashi Vishwakarma | ECE Student & Hardware Builder";
+const pageTitle = "Urvashi";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

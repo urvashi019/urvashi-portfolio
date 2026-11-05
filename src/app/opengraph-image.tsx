@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { DATA } from "@/data/resume";
 
-export const alt = "Urvashi Vishwakarma | ECE Student & Hardware Builder";
+export const alt = "Urvashi";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

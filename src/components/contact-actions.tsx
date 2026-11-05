@@ -1,4 +1,5 @@
 import { LINKEDIN_ICON } from "@/data/resume";
+import CopyEmailButton from "@/components/copy-email-button";
 
 interface ContactActionsProps {
   email: string;
@@ -29,9 +30,7 @@ export default function ContactActions({
           <LINKEDIN_ICON className="size-4" aria-hidden="true" />
         </a>
       )}
-      <a href={`mailto:${email}`} className={actionClass}>
-        Email
-      </a>
+      <CopyEmailButton email={email} className={actionClass} />
       {!compact && (
         <a
           href={resumeUrl}
